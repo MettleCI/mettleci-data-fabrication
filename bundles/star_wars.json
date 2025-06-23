@@ -719,18 +719,21 @@
     },
     "generators": [
         {
+            "category": "star wars",
             "name": "character",
             "label": "Character",
             "type": "STRING",
             "expression": "template('characters')"
         },
         {
+            "category": "star wars",
             "name": "call_sign",
             "label": "Call sign",
             "type": "STRING",
             "expression": "template('call_sign')"
         },
         {
+            "category": "star wars",
             "name": "quote",
             "label": "Quote",
             "type": "STRING",
@@ -781,30 +784,35 @@
             "expression": "template('quotes.' : NullToValue(params.character, 'all'))"
         },
         {
+            "category": "star wars",
             "name": "vehicle",
             "label": "Vehicle",
             "type": "STRING",
             "expression": "template('vehicles')"
         },
         {
+            "category": "star wars",
             "name": "droid",
             "label": "Droid",
             "type": "STRING",
             "expression": "template('droids')"
         },
         {
+            "category": "star wars",
             "name": "planet",
             "label": "Planet",
             "type": "STRING",
             "expression": "template('planets')"
         },
          {
+            "category": "star wars",
              "name": "species",
              "label": "Species",
              "type": "STRING",
              "expression": "template('species')"
         },
         {
+            "category": "star wars",
             "name": "wookiee_word",
             "label": "Wookiee word",
             "type": "STRING",
