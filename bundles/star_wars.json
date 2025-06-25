@@ -731,7 +731,7 @@
         {
             "category": "star_wars",
             "name": "call_sign",
-            "label": "Call sign",,
+            "label": "Call sign",
             "description": "Generates a random Star Wars call sign, e.g. 'Red 5', 'Blue Leader'",
             "type": "STRING",
             "expression": "template('call_sign')"
