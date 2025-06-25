@@ -724,13 +724,15 @@
             "category": "star_wars",
             "name": "character",
             "label": "Character",
+            "description": "Generates a random Star Wars character name",
             "type": "STRING",
             "expression": "template('characters')"
         },
         {
             "category": "star_wars",
             "name": "call_sign",
-            "label": "Call sign",
+            "label": "Call sign",,
+            "description": "Generates a random Star Wars call sign, e.g. 'Red 5', 'Blue Leader'",
             "type": "STRING",
             "expression": "template('call_sign')"
         },
@@ -738,6 +740,7 @@
             "category": "star_wars",
             "name": "quote",
             "label": "Quote",
+            "description": "Generates a random quote from a Star Wars character",
             "type": "STRING",
             "parameters": [
             	{
@@ -789,6 +792,7 @@
             "category": "star_wars",
             "name": "vehicle",
             "label": "Vehicle",
+            "description": "Generates a random Star Wars vehicle name",
             "type": "STRING",
             "expression": "template('vehicles')"
         },
@@ -796,6 +800,7 @@
             "category": "star_wars",
             "name": "droid",
             "label": "Droid",
+            "description": "Generates a random Star Wars droid name",
             "type": "STRING",
             "expression": "template('droids')"
         },
@@ -803,6 +808,7 @@
             "category": "star_wars",
             "name": "planet",
             "label": "Planet",
+            "description": "Generates a random Star Wars planet name",
             "type": "STRING",
             "expression": "template('planets')"
         },
@@ -810,6 +816,7 @@
             "category": "star_wars",
              "name": "species",
              "label": "Species",
+            "description": "Generates a random Star Wars species name",
              "type": "STRING",
              "expression": "template('species')"
         },
@@ -817,6 +824,7 @@
             "category": "star_wars",
             "name": "wookiee_word",
             "label": "Wookiee word",
+            "description": "Generates a random Wookiee word",
             "type": "STRING",
             "expression": "template('wookiee_words')"
         }
