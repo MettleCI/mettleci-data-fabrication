@@ -8169,6 +8169,13 @@
             "Semiconductors & Semiconductor Equipment",
             "Software & IT Services",
             "Telecommunications Services"
+        ],
+        "analyst_rating": [
+            "Strong Buy",
+            "Buy",
+            "Hold",
+            "Sell",
+            "Strong Sell"
         ]
     },
     "generators": [
@@ -8277,6 +8284,14 @@
             "description": "Industry of the company",
             "type": "STRING",
             "expression": "template('industry')"
+        },
+        {
+            "category": "stocks",
+            "name": "analyst_rating",
+            "label": "Analyst rating",
+            "description": "Analyst rating for the stock",
+            "type": "STRING",
+            "expression": "template('analyst_rating')"
         }
     ]
 }
