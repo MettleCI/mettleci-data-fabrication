@@ -8130,6 +8130,45 @@
             "United Kingdom",
             "United States",
             "Uruguay"
+        ],
+        "sector": [
+            "Basic Materials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Finance",
+            "Health Care",
+            "Industrials",
+            "Miscellaneous",
+            "Real Estate",
+            "Technology",
+            "Telecommunications",
+            "Utilities"
+        ],
+        "industry": [
+            "Aerospace & Defense",
+            "Airlines",
+            "Apparel Retail",
+            "Automotive",
+            "Banking",
+            "Biotechnology",
+            "Chemicals",
+            "Construction & Engineering",
+            "Consumer Electronics",
+            "Diversified Financials",
+            "Electric Utilities",
+            "Food & Beverage",
+            "Healthcare Equipment & Services",
+            "Insurance",
+            "Internet Software & Services",
+            "Media & Entertainment",
+            "Oil & Gas Exploration & Production",
+            "Pharmaceuticals",
+            "Real Estate Investment Trusts (REITs)",
+            "Retailing",
+            "Semiconductors & Semiconductor Equipment",
+            "Software & IT Services",
+            "Telecommunications Services"
         ]
     },
     "generators": [
@@ -8216,12 +8255,28 @@
             "expression": "YearFromDate(DateFromDaysSince(Abs(Mod(Random(),20000)),'1950-01-01'))"
         },
         {
-          "category": "stocks",
-          "name": "volume",
-          "label": "Volume",
-          "description": "Number of shares traded",
-          "type": "INTEGER",
-          "expression": "regex('([0-9]{6,8})')"
+            "category": "stocks",
+            "name": "volume",
+            "label": "Volume",
+            "description": "Number of shares traded",
+            "type": "INTEGER",
+            "expression": "regex('([0-9]{6,8})')"
+        },
+        {
+            "category": "stocks",
+            "name": "sector",
+            "label": "Sector",
+            "description": "Sector of the company",
+            "type": "STRING",
+            "expression": "template('sector')"
+        },
+        {
+            "category": "stocks",
+            "name": "industry",
+            "label": "Industry",
+            "description": "Industry of the company",
+            "type": "STRING",
+            "expression": "template('industry')"
         }
     ]
 }
