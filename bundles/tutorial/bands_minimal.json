@@ -1,0 +1,16 @@
+{
+    "templates": {
+        "beatles-members": [ "John Lennon", "George Harrison", "Paul McCartney", "Ringo Starr"]    
+    },
+    "generators": [
+        {
+            "category": "band",
+            "name": "beatles-member",
+            "label": "Member name",
+            "description": "A random member of a band",
+            "type": "STRING",
+            "expression": "template('beatles-members')"
+        }
+    ]
+}
+e

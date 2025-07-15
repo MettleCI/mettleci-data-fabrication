@@ -1,0 +1,90 @@
+{
+    "templates": {
+        "bands": {
+            "beatles": {
+                "members": [
+                    "John Lennon", "George Harrison", "Paul McCartney", "Ringo Starr"
+                ],
+                "albums": [
+                    "Sgt. Pepper’s Lonely Hearts Club Band (<YEAR>)", "Revolver (<YEAR>)", "Abbey Road (<YEAR>)"
+                ]
+            },
+            "stones": {
+                "members": [
+                    "Mick Jagger", "Keith Richards", "Charlie Watts", "Bill Wyman", "Ronnie Wood"
+                ],
+                "albums": [
+                    "Exile on Main St. (<YEAR>)", "Let It Bleed (<YEAR>)", "Sticky Fingers (<YEAR>)"
+                ]
+            },
+            "queen": {
+                "members": [
+                    "Freddie Mercury", "Brian May", "Roger Taylor", "John Deacon"
+                ],
+                "albums": [
+                    "A Night at the Opera (<YEAR>)", "News of the World (<YEAR>)", "The Game (<YEAR>)"
+                ]            
+            },
+            "all": {
+                "members": [
+                    "#{bands.beatles.members}", "#{bands.stones.members}", "#{bands.queen.members}"
+                ],
+                "albums": [
+                    "#{bands.beatles.albums}", "#{bands.stones.albums}", "#{bands.queen.albums}"
+                ]            
+            }
+        }
+    },
+    "generators": [
+        {
+            "category": "band",
+            "name": "member",
+            "label": "Member name",
+            "description": "A random member of a band",
+            "type": "STRING",
+        	"parameters": [
+				{
+					"name": "band",
+					"type": "STRING",
+					"label": "Name of band",
+					"description": "Name of the band whose member to generate",
+					"nullable": true,
+					"editor": {
+						"type": "SelectList",
+						"values": {
+							"beatles": "The Beatles",
+							"stones": "The Rolling Stones",
+							"queen": "Queen"
+						}
+					}
+				}
+			],
+            "expression": "template('bands.':NullToValue(params.band,'all'):'.members')"
+        },
+        {
+            "category": "band",
+            "name": "album",
+            "label": "Album name",
+            "description": "A random album by a band",
+            "type": "STRING",
+        	"parameters": [
+				{
+					"name": "band",
+					"type": "STRING",
+					"label": "Name of band",
+					"description": "Name of the band whose album to generate",
+					"nullable": true,
+					"editor": {
+						"type": "SelectList",
+						"values": {
+							"beatles": "The Beatles",
+							"stones": "The Rolling Stones",
+							"queen": "Queen"
+						}
+					}
+				}
+			],
+            "expression": "ereplace(template('bands.':NullToValue(params.band,'all'):'.albums'), '<YEAR>', regex('(196[5-9]|197[0-9]|1980)'))"
+        }
+    ]
+}
