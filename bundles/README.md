@@ -2,7 +2,10 @@
 
 ## Using these bundle files
 
-Instructions on how to use these bundle files can be found here.
+Instructions on how to download and use these bundle files to provide new data fabrication capabilities for MettleCI Workbench can be found [here](https://docs.mettleci.io/datafab).
+
+Instructions on how to create your own custom data fabrication capabilities for MettleCI Workbench can also be found [under the same documentation section](https://docs.mettleci.io/datafab).
+
 
 ## Submitting your own bundle files
 
@@ -47,6 +50,8 @@ Submissions that fail due to runtime exceptions, invalid bundle structures, or i
     ```
 
 > ⚠️ You must pass all pre-commit checks before submitting your pull request.
+
+> 🚨 **Please ensure any data generator definitions submitted to this public repository do not contain any Intellectual Property or Personally Identifiable Information.**
 
 ## ✅ 5. Commit Your Changes
 
