@@ -32,11 +32,18 @@ cd https://github.com/MettleCI/mettleci-data-fabrication
 
 ## 📄 3. Add Your JSON File
 
-Place your JSON file in the `bundles/` directory.  
+1. Place your JSON file in the `/bundles` directory.  
 
 Instructions on creating a custom data fabrication bundle file can be found in [the documentation](https://docs.mettleci.io/datafab).
 
-## ✅ 4. Run Pre-Commit Checks (Required)
+## 📋 4. Add a test script (optional)
+
+1. Optionally, place a test script in the `/tests` directory.  
+
+The time taken to approve your submission will be shorter if you provide a script which demonstrates the operation of your genreators.  
+The `bundles/tests/test_stocks.sh` file provides an example test script you can use for guidance. 
+
+## ✅ 5. Run Pre-Commit Checks (Required)
 
 ⚙️ Generator Requirements
 All submitted generators must function correctly and produce valid output without errors. Please test your generator thoroughly before committing it, using the `mettleci fabrication test` command documentated [here](https://datamigrators.atlassian.net/wiki/spaces/MCIDOC/pages/3285811201/Fabrication+Test+Command).
@@ -45,18 +52,18 @@ Submissions that fail due to runtime exceptions, invalid bundle structures, or i
 
 **Run checks locally before committing**:
 
-    ```
-    mettleci fabrication test -path {bundles/your-bundle-file.json} -generator {generator-name}
-    ```
+```bash
+mettleci fabrication test -path {bundles/your-bundle-file.json} -generator {generator-name}
+```
 
 > ⚠️ You must pass all pre-commit checks before submitting your pull request.
 
 > 🚨 **Please ensure any data generator definitions submitted to this public repository do not contain any Intellectual Property or Personally Identifiable Information.**
 
-## ✅ 5. Commit Your Changes
+## ✅ 6. Commit Your Changes
 
 ```bash
-git add {bundles/your-bundle-file.json}
+git add bundles/your-bundle-file.json
 git commit -m "Added a new bundle file which generates {description}"
 ```
 
@@ -65,20 +72,20 @@ git commit -m "Added a new bundle file which generates {description}"
 🔀 **NOTE:** Branching Policy
 Please do not create a new branch when making your contribution. All pull requests should be made directly against the main branch of the repository. Contributions made from feature or topic branches will not be accepted. To keep things simple and consistent, work in your fork's main branch and open your pull request from there.
 
-## 🔄 6. Push to Your Fork
+## 🔄 7. Push to Your Fork
 
 ```bash
 git push origin main
 ```
 
-## 🚀 7. Open a Pull Request
+## 🚀 8. Open a Pull Request
 
 1. Visit your fork on GitHub.
 2. Click the **"Compare & pull request"** button.
 3. Fill in a meaningful title and description.
 4. Submit the pull request.
 
-## 📝 8. Wait for Review
+## 📝 9. Wait for Review
 
 A project maintainer will review your pull request. They may request changes before it can be merged.
 
