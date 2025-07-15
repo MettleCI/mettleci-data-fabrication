@@ -40,8 +40,7 @@ Instructions on creating a custom data fabrication bundle file can be found in [
 
 1. Optionally, place a test script in the `/tests` directory.  
 
-The time taken to approve your submission will be shorter if you provide a script which demonstrates the operation of your genreators.  
-The `bundles/tests/test_stocks.sh` file provides an example test script you can use for guidance. 
+The time taken to approve your submission will be shorter if you provide a script which demonstrates the operation of your genreators.  This is as simple a providing a file containing a `mettleci fabrication test` command for each of your generators.  The `bundles/tests/test_stocks.sh` file provides an example test script you can use for guidance. 
 
 ## ✅ 5. Run Pre-Commit Checks (Required)
 
@@ -50,15 +49,13 @@ All submitted generators must function correctly and produce valid output withou
 
 Submissions that fail due to runtime exceptions, invalid bundle structures, or improper formatting may be rejected or require revision. Ensuring that your generators run cleanly is essential to maintaining the quality and reliability of this repository.
 
-**Run checks locally before committing**:
+Run checks locally before committing:
 
 ```bash
-mettleci fabrication test -path {bundles/your-bundle-file.json} -generator {generator-name}
+mettleci fabrication test -path bundles/your-bundle-file.json -generator {your-generator-name}
 ```
 
-> ⚠️ You must pass all pre-commit checks before submitting your pull request.
-
-> 🚨 **Please ensure any data generator definitions submitted to this public repository do not contain any Intellectual Property or Personally Identifiable Information.**
+> ⚠️ **Please ensure any data generator definitions submitted to this public repository do not contain any Intellectual Property or Personally Identifiable Information.**
 
 ## ✅ 6. Commit Your Changes
 
@@ -69,7 +66,7 @@ git commit -m "Added a new bundle file which generates {description}"
 
 > Replacing `{description}` with text explaining the type of data created by your bundle file
 
-🔀 **NOTE:** Branching Policy
+🔀 **Branching Policy:** 
 Please do not create a new branch when making your contribution. All pull requests should be made directly against the main branch of the repository. Contributions made from feature or topic branches will not be accepted. To keep things simple and consistent, work in your fork's main branch and open your pull request from there.
 
 ## 🔄 7. Push to Your Fork
@@ -81,7 +78,7 @@ git push origin main
 ## 🚀 8. Open a Pull Request
 
 1. Visit your fork on GitHub.
-2. Click the **"Compare & pull request"** button.
+2. Click the **Compare & pull request** button.
 3. Fill in a meaningful title and description.
 4. Submit the pull request.
 
