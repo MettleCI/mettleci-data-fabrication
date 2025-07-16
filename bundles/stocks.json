@@ -384,7 +384,7 @@
                   }
               }
             ],
-            "expression": "If IsNull(params.exchange) Then template('stocks.all.symbol') Else template('stocks.':params.exchange:'.symbol')"
+            "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.symbol')"
         },
         {
             "category": "stocks",
@@ -409,7 +409,7 @@
                   }
               }
             ],
-            "expression": "If IsNull(params.exchange) Then template('stocks.all.name') Else template('stocks.':params.exchange:'.name')"
+            "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.name')"
         },
         {
             "category": "stocks",
@@ -461,19 +461,19 @@
         },
         {
             "category": "stocks",
-            "name": "volume",
-            "label": "Volume",
-            "description": "Number of shares traded",
-            "type": "INTEGER",
-            "expression": "10000+Abs(Mod(Random(),1000000))"
-        },
-        {
-            "category": "stocks",
             "name": "analyst_rating",
             "label": "Analyst rating",
             "description": "Analyst rating for the stock",
             "type": "STRING",
             "expression": "template('stocks.analyst_rating')"
+        },
+        {
+            "category": "stocks",
+            "name": "volume",
+            "label": "Volume",
+            "description": "Number of shares traded",
+            "type": "INTEGER",
+            "expression": "10000+Abs(Mod(Random(),1000000))"
         },
         {
             "category": "stocks",

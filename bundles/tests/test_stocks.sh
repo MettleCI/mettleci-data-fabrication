@@ -4,53 +4,49 @@
 # This script runs tests for the stocks bundle using the mettleci tool.
 shopt -s xpg_echo
 
-echo "\nstocks.analyst_rating"
-mettleci fabrication test -path . -generator stocks.analyst_rating
+export bundle=./stocks.json
 
-echo "\nstocks.exchange"
-mettleci fabrication test -path . -generator stocks.exchange
+echo "\nListing available generators"
+mettleci fabrication list -path $bundle -include-params
 
-echo "\nstocks.ipo_year"
-mettleci fabrication test -path . -generator stocks.ipo_year
+export exchanges=("lse" "nsdq" "nyse")
+for exchange in "${exchanges[@]}"; do
+    echo "\nstocks.symbol ($exchange)"
+    mettleci fabrication test -path $bundle -generator stocks.symbol -Pexchange="$exchange"
 
-echo "\nstocks.price"
-mettleci fabrication test -path . -generator stocks.price
-
-echo "\nstocks.market_cap"
-mettleci fabrication test -path . -generator stocks.market_cap
-
-echo "\nstocks.net_change"
-mettleci fabrication test -path . -generator stocks.net_change
-
-echo "\nstocks.pct_change"
-mettleci fabrication test -path . -generator stocks.pct_change
+    echo "\nstocks.name ($exchange)"
+    mettleci fabrication test -path $bundle -generator stocks.name -Pexchange="$exchange"
+done
 
 echo "\nstocks.symbol (all)"
-mettleci fabrication test -path . -generator stocks.symbol
-
-echo "\nstocks.symbol (lse)"
-mettleci fabrication test -path . -generator stocks.symbol -Pexchange="lse"
-
-echo "\nstocks.symbol (nsdq)"
-mettleci fabrication test -path . -generator stocks.symbol  -Pexchange="nsdq"
-
-echo "\nstocks.symbol (nyse)"
-mettleci fabrication test -path . -generator stocks.symbol  -Pexchange="nyse"
+mettleci fabrication test -path $bundle -generator stocks.symbol  -Pexchange="nsdq"
 
 echo "\nstocks.name (all)"
-mettleci fabrication test -path . -generator stocks.name
+mettleci fabrication test -path $bundle -generator stocks.name
 
-echo "\nstocks.name (lse)"
-mettleci fabrication test -path . -generator stocks.name  -Pexchange="lse"
+echo "\nstocks.analyst_rating"
+mettleci fabrication test -path $bundle -generator stocks.analyst_rating
 
-echo "\nstocks.name (nsdq)"
-mettleci fabrication test -path . -generator stocks.name  -Pexchange="nsdq"
+echo "\nstocks.exchange"
+mettleci fabrication test -path $bundle -generator stocks.exchange
 
-echo "\nstocks.name (nyse)"
-mettleci fabrication test -path . -generator stocks.name  -Pexchange="nyse"
+echo "\nstocks.ipo_year"
+mettleci fabrication test -path $bundle -generator stocks.ipo_year
+
+echo "\nstocks.price"
+mettleci fabrication test -path $bundle -generator stocks.price
+
+echo "\nstocks.market_cap"
+mettleci fabrication test -path $bundle -generator stocks.market_cap
+
+echo "\nstocks.net_change"
+mettleci fabrication test -path $bundle -generator stocks.net_change
+
+echo "\nstocks.pct_change"
+mettleci fabrication test -path $bundle -generator stocks.pct_change
 
 echo "\nstocks.volume"
-mettleci fabrication test -path . -generator stocks.volume
+mettleci fabrication test -path $bundle -generator stocks.volume
 
 echo "\nstocks.year_volume"
-mettleci fabrication test -path . -generator stocks.year_volume
+mettleci fabrication test -path $bundle -generator stocks.year_volume

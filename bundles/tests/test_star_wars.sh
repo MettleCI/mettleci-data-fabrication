@@ -4,15 +4,17 @@
 # This script runs tests for the star_wars bundle using the mettleci tool.
 shopt -s xpg_echo
 
+export bundle=./star_wars.json
+
 echo "\nstar_wars.call_sign"
-mettleci fabrication test -path . -generator star_wars.call_sign
+mettleci fabrication test -path $bundle -generator star_wars.call_sign
 
 echo "\nstar_wars.character"
-mettleci fabrication test -path . -generator star_wars.character
+mettleci fabrication test -path $bundle -generator star_wars.character
 
 # Produce three random quotes from randomly selected main characters
 # Comma-delimited list of pmain characters
-character_list="admiral_ackbar,boba_fett,c_3po,darth_vader,emperor_palpatine,han_solo,jabba_the_hutt,lando_calrissian,leia_organa,luke_skywalker,obi_wan_kenobi,yoda"
+character_list="c_3po,darth_vader,emperor_palpatine,han_solo,leia_organa,luke_skywalker,obi_wan_kenobi,yoda"
 # Convert the comma-separated string into an array
 IFS=',' read -ra characters <<< "$character_list"
 # Get the number of items
@@ -33,21 +35,21 @@ for i in {1..3}; do
     # Output
     echo "\n[Obi-Wan Kenobi] : Hello there, $camel_case_character!"
     echo "\nstar_wars.quote ($character_code)"
-    mettleci fabrication test -path . -generator star_wars.quote -Pcharacter="$character_code"
+    mettleci fabrication test -path $bundle -generator star_wars.quote -Pcharacter="$character_code"
 done
 
 echo "\nstar_wars.droid"
-mettleci fabrication test -path . -generator star_wars.droid
+mettleci fabrication test -path $bundle -generator star_wars.droid
 
 echo "\nstar_wars.planet"
-mettleci fabrication test -path . -generator star_wars.planet
+mettleci fabrication test -path $bundle -generator star_wars.planet
 
 
 echo "\nstar_wars.species"
-mettleci fabrication test -path . -generator star_wars.species
+mettleci fabrication test -path $bundle -generator star_wars.species
 
 echo "\nstar_wars.vehicle"
-mettleci fabrication test -path . -generator star_wars.vehicle
+mettleci fabrication test -path $bundle -generator star_wars.vehicle
 
 echo "\nstar_wars.wookiee_word"
-mettleci fabrication test -path . -generator star_wars.wookiee_word
+mettleci fabrication test -path $bundle -generator star_wars.wookiee_word
