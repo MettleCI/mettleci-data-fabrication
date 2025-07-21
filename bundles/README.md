@@ -47,7 +47,9 @@ mettleci fabrication test -path bundles/your-bundle-file.json -generator {your-g
 
 ### ✅ 6. Commit your changes
 
-1. ⚠️ **Verify that your dunbundlke file does not contain any Intellectual Property or Personally Identifiable Information.**
+1. ⚠️ **Verify that your bundle file does not contain any Intellectual Property or Personally Identifiable Information.** ⚠️
+   - Ensure that your JSON file does not include any sensitive information, proprietary data, or data that you do not have permission to share.
+   - If your bundle file contains any third-party data, ensure you have the right to distribute them under the terms of this repository.
 2. Commit your work to your fork:
 ```bash
 git add bundles/your-bundle-file.json
