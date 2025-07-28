@@ -360,129 +360,124 @@
             ]
         }
     },
-    "generators": [
+    "categories": [
         {
-            "category": "stocks",
-            "name": "symbol",
-            "label": "Stock symbol",
-            "description": "Stock symbol for the company",
-            "type": "STRING",
-            "parameters": [
+            "id": "stocks",
+            "name": "Stocks",
+            "generators": [
                 {
-                  "name": "exchange",
-                  "label": "Exchange",
-                  "description": "Exchange upon which the stock is listed",
-                  "type": "STRING",
-                  "nullable": true,
-                  "editor": {
-                    "type": "SelectList",
-                    "values": {
-                      "lse": "LSE",
-                      "nsdq": "NSDQ",
-                      "nyse": "NYSE"
+                    "id": "symbol",
+                    "name": "Stock symbol",
+                    "description": "Stock symbol for the company",
+                    "type": "STRING",
+                    "parameters": [
+                        {
+                        "id": "exchange",
+                        "name": "Exchange",
+                        "description": "Exchange upon which the stock is listed",
+                        "type": "STRING",
+                        "nullable": true,
+                        "editor": {
+                            "type": "SelectList",
+                            "values": {
+                            "lse": "LSE",
+                            "nsdq": "NSDQ",
+                            "nyse": "NYSE"
+                            }
+                        }
                     }
-                  }
-              }
-            ],
-            "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.symbol')"
-        },
-        {
-            "category": "stocks",
-            "name": "name",
-            "label": "Stock n ame",
-            "description": "Stock name",
-            "type": "STRING",
-            "parameters": [
+                    ],
+                    "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.symbol')"
+                },
                 {
-                  "name": "exchange",
-                  "label": "Exchange",
-                  "description": "Exchange upon which the stock is listed",
-                  "type": "STRING",
-                  "nullable": true,
-                  "editor": {
-                    "type": "SelectList",
-                    "values": {
-                      "lse": "LSE",
-                      "nsdq": "NSDQ",
-                      "nyse": "NYSE"
+                    "id": "name",
+                    "name": "Stock n ame",
+                    "description": "Stock name",
+                    "type": "STRING",
+                    "parameters": [
+                        {
+                        "id": "exchange",
+                        "name": "Exchange",
+                        "description": "Exchange upon which the stock is listed",
+                        "type": "STRING",
+                        "nullable": true,
+                        "editor": {
+                            "type": "SelectList",
+                            "values": {
+                            "lse": "LSE",
+                            "nsdq": "NSDQ",
+                            "nyse": "NYSE"
+                            }
+                        }
                     }
-                  }
-              }
-            ],
-            "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.name')"
-        },
-        {
-            "category": "stocks",
-            "name": "exchange",
-            "label": "Exchange",
-            "description": "Exchange upon which the stock is listed",
-            "type": "STRING",
-            "expression": "template('stocks.exchange')"
-        },
-        {
-            "category": "stocks",
-            "name": "price",
-            "label": "Stoxk price",
-            "description": "Sale price (use for latest, high, low)",
-            "type": "STRING",
-            "expression": "regex('\\$[1-9]([0-9]{0,2})\\.([0-9]{2})')"
-        },
-        {
-            "category": "stocks",
-            "name": "net_change",
-            "label": "Net change",
-            "description": "Change in stock price from previous close",
-            "type": "STRING",
-            "expression": "regex('[+-]\\$[1-9]([0-9]{0,1})\\.([0-9]{2})')"
-        },
-        {
-            "category": "stocks",
-            "name": "pct_change",
-            "label": "Percent change",
-            "description": "Percentage change in stock price",
-            "type": "STRING",
-            "expression": "regex('[+-][0-9]\\.([0-9]{2})%')"
-        },
-        {
-            "category": "stocks",
-            "name": "market_cap",
-            "label": "Market cap",
-            "description": "Market capitalization",
-            "type": "STRING",
-            "expression": "regex('\\$([1-9][0-9]{9,12})')"
-        },
-        {
-            "category": "stocks",
-            "name": "ipo_year",
-            "label": "IPO year",
-            "description": "Year of initial public offering",
-            "type": "STRING",
-            "expression": "YearFromDate(DateFromDaysSince(Abs(Mod(Random(),20000)),'1950-01-01'))"
-        },
-        {
-            "category": "stocks",
-            "name": "analyst_rating",
-            "label": "Analyst rating",
-            "description": "Analyst rating for the stock",
-            "type": "STRING",
-            "expression": "template('stocks.analyst_rating')"
-        },
-        {
-            "category": "stocks",
-            "name": "volume",
-            "label": "Volume",
-            "description": "Number of shares traded",
-            "type": "INTEGER",
-            "expression": "10000+Abs(Mod(Random(),1000000))"
-        },
-        {
-            "category": "stocks",
-            "name": "year_volume",
-            "label": "Year volume traded",
-            "description": "Total volume of shares traded in the year",
-            "type": "INTEGER",
-            "expression": "1000000+Abs(Mod(Random(),100000000))"
+                    ],
+                    "expression": "template('stocks.':NullToValue(params.exchange,'all'):'.name')"
+                },
+                {
+                    "id": "exchange",
+                    "name": "Exchange",
+                    "description": "Exchange upon which the stock is listed",
+                    "type": "STRING",
+                    "expression": "template('stocks.exchange')"
+                },
+                {
+                    "id": "price",
+                    "name": "Stoxk price",
+                    "description": "Sale price (use for latest, high, low)",
+                    "type": "STRING",
+                    "expression": "regex('\\$[1-9]([0-9]{0,2})\\.([0-9]{2})')"
+                },
+                {
+                    "id": "net_change",
+                    "name": "Net change",
+                    "description": "Change in stock price from previous close",
+                    "type": "STRING",
+                    "expression": "regex('[+-]\\$[1-9]([0-9]{0,1})\\.([0-9]{2})')"
+                },
+                {
+                    "id": "pct_change",
+                    "name": "Percent change",
+                    "description": "Percentage change in stock price",
+                    "type": "STRING",
+                    "expression": "regex('[+-][0-9]\\.([0-9]{2})%')"
+                },
+                {
+                    "id": "market_cap",
+                    "name": "Market cap",
+                    "description": "Market capitalization",
+                    "type": "STRING",
+                    "expression": "regex('\\$([1-9][0-9]{9,12})')"
+                },
+                {
+                    "id": "ipo_year",
+                    "name": "IPO year",
+                    "description": "Year of initial public offering",
+                    "type": "STRING",
+                    "expression": "YearFromDate(DateFromDaysSince(Abs(Mod(Random(),20000)),'1950-01-01'))"
+                },
+                {
+                    "id": "analyst_rating",
+                    "name": "Analyst rating",
+                    "description": "Analyst rating for the stock",
+                    "type": "STRING",
+                    "expression": "template('stocks.analyst_rating')"
+                },
+                {
+                    "id": "volume",
+                    "name": "Volume",
+                    "description": "Number of shares traded",
+                    "type": "INTEGER",
+                    "expression": "10000+Abs(Mod(Random(),1000000))"
+                },
+                {
+                    "id": "year_volume",
+                    "name": "Year volume traded",
+                    "description": "Total volume of shares traded in the year",
+                    "type": "INTEGER",
+                    "expression": "1000000+Abs(Mod(Random(),100000000))"
 
+                }
+            ]
         }
     ]
 }

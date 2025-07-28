@@ -32,59 +32,110 @@
                 "albums": [
                     "#{bands.beatles.albums}", "#{bands.stones.albums}", "#{bands.queen.albums}"
                 ]            
+            },
+            "publishers": {
+                "apple": [ "(APPLE|APCOR|SAPCOR|PCS|R|12R|SKBO|SMAS|SW|ST|SO)[ \-]?[0-9]{2,5}" ],
+                "capitol": [ "(CDP|CLJ|ST|SM|T|E)[ ]?[0-9]{4,6}([ \-][0-9])?" ],
+                "emi": [ "(EMI|CDP|12EMI|7EMI|7243|50999)[0-9 \-]{5,20}" ],
+                "polydor": [ "(0289|423|475|477)[ \-]?[0-9]{3}[ \-]?[0-9]{4,5}" ],
+                "rca": [ "(PD|RDJ|BVCA|RCA)[ ]?[0-9]{4,6}(-[0-9])?" ],
+                "sony": [ "(EK|COL|ESCA|ESCB|SRCS|BVCP)?[ ]?[0-9]{5,7}(-[0-9]{1,2})?" ],
+                "universal": [ "(06025|B[0-9]{6,7})[ \-]?[0-9]{4,7}(-[0-9]{2})?" ],
+                "virgin": [ "(CDV|VSCDT|7243)[ ]?[0-9]{1,7}([ \-]?[0-9]{1,4})*" ],
+                "warner": [ "(R2|8122)[ \-]?[0-9]{4,6}(-[0-9]{1,2})?" ],
+                "all": [
+                    "#{publishers.apple}", "#{publishers.capitol}", "#{publishers.emi}",
+                    "#{publishers.polydor}", "#{publishers.rca}", "#{publishers.sony}",
+                    "#{publishers.universal}", "#{publishers.virgin}", "#{publishers.warner}"
+                ]
             }
         }
     },
-    "generators": [
+    "categories": [
         {
-            "category": "band",
-            "name": "member",
-            "label": "Member name",
-            "description": "A random member of a band",
-            "type": "STRING",
-        	"parameters": [
-				{
-					"name": "band",
-					"type": "STRING",
-					"label": "Name of band",
-					"description": "Name of the band whose member to generate",
-					"nullable": true,
-					"editor": {
-						"type": "SelectList",
-						"values": {
-							"beatles": "The Beatles",
-							"stones": "The Rolling Stones",
-							"queen": "Queen"
-						}
-					}
-				}
-			],
-            "expression": "template('bands.':NullToValue(params.band,'all'):'.members')"
-        },
-        {
-            "category": "band",
-            "name": "album",
-            "label": "Album name",
-            "description": "A random album by a band",
-            "type": "STRING",
-        	"parameters": [
-				{
-					"name": "band",
-					"type": "STRING",
-					"label": "Name of band",
-					"description": "Name of the band whose album to generate",
-					"nullable": true,
-					"editor": {
-						"type": "SelectList",
-						"values": {
-							"beatles": "The Beatles",
-							"stones": "The Rolling Stones",
-							"queen": "Queen"
-						}
-					}
-				}
-			],
-            "expression": "ereplace(template('bands.':NullToValue(params.band,'all'):'.albums'), '<YEAR>', regex('(196[5-9]|197[0-9]|1980)'))"
+            "id": "band",
+            "name": "Band",
+            "generators": [
+                {
+                    "id": "member",
+                    "name": "Member name",
+                    "description": "A random member of a band",
+                    "type": "STRING",
+                    "parameters": [
+                        {
+                            "name": "band",
+                            "type": "STRING",
+                            "label": "Name of band",
+                            "description": "Name of the band whose member to generate",
+                            "nullable": true,
+                            "editor": {
+                                "type": "SelectList",
+                                "values": {
+                                    "beatles": "The Beatles",
+                                    "stones": "The Rolling Stones",
+                                    "queen": "Queen"
+                                }
+                            }
+                        }
+                    ],
+                    "expression": "template('bands.':NullToValue(params.band,'all'):'.members')"
+                },
+                {
+                    "id": "album",
+                    "name": "Album name",
+                    "description": "A random album by a band",
+                    "type": "STRING",
+                    "parameters": [
+                        {
+                            "name": "band",
+                            "type": "STRING",
+                            "label": "Name of band",
+                            "description": "Name of the band whose album will be generated",
+                            "nullable": true,
+                            "editor": {
+                                "type": "SelectList",
+                                "values": {
+                                    "beatles": "The Beatles",
+                                    "stones": "The Rolling Stones",
+                                    "queen": "Queen"
+                                }
+                            }
+                        }
+                    ],
+                    "expression": "ereplace(template('bands.':NullToValue(params.band,'all'):'.albums'), '<YEAR>', regex('(196[5-9]|197[0-9]|1980)'))"
+                },
+                {
+                    "id": "catalog_number",
+                    "name": "Catalog number",
+                    "description": "The album's catalog number",
+                    "type": "STRING",
+                    "parameters": [
+                        {
+                            "id": "publisher",
+                            "name": "Publisher",
+                            "type": "STRING",
+                            "description": "Name of the publisher whose catalog number will be generated",
+                            "nullable": true,
+                            "editor": {
+                                "type": "SelectList",
+                                "values": {
+                                    "apple": "Apple",
+                                    "capitol": "Capitol",
+                                    "emi": "EMI",
+                                    "polydor": "Polydor",
+                                    "rca": "RCA",
+                                    "sony": "Sony",
+                                    "universal": "Universal",
+                                    "virgin": "Virgin",
+                                    "warner": "Warner",
+                                    "all": "All publishers"  
+                                }
+                            }
+                        }
+                    ],
+                    "expression": "regex(template('publishers.':params.publisher:')')"
+                }
+            ]
         }
     ]
 }

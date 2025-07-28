@@ -2,15 +2,19 @@
     "templates": {
         "beatles-members": [ "John Lennon", "George Harrison", "Paul McCartney", "Ringo Starr"]    
     },
-    "generators": [
+    "categories": [
         {
-            "category": "band",
-            "name": "beatles-member",
-            "label": "Member name",
-            "description": "A random member of a band",
-            "type": "STRING",
-            "expression": "template('beatles-members')"
+            "id": "band",
+            "name": "Band",
+            "generators": [
+                {
+                    "id": "beatles-member",
+                    "name": "Member name",
+                    "description": "A random member of a band",
+                    "type": "STRING",
+                    "expression": "template('beatles-members')"
+                }
+            ]
         }
     ]
 }
-e
