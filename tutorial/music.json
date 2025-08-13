@@ -34,15 +34,15 @@
                 ]            
             },
             "publishers": {
-                "apple": [ "(APPLE|APCOR|SAPCOR|PCS|R|12R|SKBO|SMAS|SW|ST|SO)[ \-]?[0-9]{2,5}" ],
-                "capitol": [ "(CDP|CLJ|ST|SM|T|E)[ ]?[0-9]{4,6}([ \-][0-9])?" ],
-                "emi": [ "(EMI|CDP|12EMI|7EMI|7243|50999)[0-9 \-]{5,20}" ],
-                "polydor": [ "(0289|423|475|477)[ \-]?[0-9]{3}[ \-]?[0-9]{4,5}" ],
+                "apple": [ "(APPLE|APCOR|SAPCOR|PCS|R|12R|SKBO|SMAS|SW|ST|SO)[ \\-]?[0-9]{2,5}" ],
+                "capitol": [ "(CDP|CLJ|ST|SM|T|E)[ ]?[0-9]{4,6}([ \\-][0-9])?" ],
+                "emi": [ "(EMI|CDP|12EMI|7EMI|7243|50999)[0-9 \\-]{5,20}" ],
+                "polydor": [ "(0289|423|475|477)[ \\-]?[0-9]{3}[ \\-]?[0-9]{4,5}" ],
                 "rca": [ "(PD|RDJ|BVCA|RCA)[ ]?[0-9]{4,6}(-[0-9])?" ],
                 "sony": [ "(EK|COL|ESCA|ESCB|SRCS|BVCP)?[ ]?[0-9]{5,7}(-[0-9]{1,2})?" ],
-                "universal": [ "(06025|B[0-9]{6,7})[ \-]?[0-9]{4,7}(-[0-9]{2})?" ],
-                "virgin": [ "(CDV|VSCDT|7243)[ ]?[0-9]{1,7}([ \-]?[0-9]{1,4})*" ],
-                "warner": [ "(R2|8122)[ \-]?[0-9]{4,6}(-[0-9]{1,2})?" ],
+                "universal": [ "(06025|B[0-9]{6,7})[ \\-]?[0-9]{4,7}(-[0-9]{2})?" ],
+                "virgin": [ "(CDV|VSCDT|7243)[ ]?[0-9]{1,7}([ \\-]?[0-9]{1,4})*" ],
+                "warner": [ "(R2|8122)[ \\-]?[0-9]{4,6}(-[0-9]{1,2})?" ],
                 "all": [
                     "#{publishers.apple}", "#{publishers.capitol}", "#{publishers.emi}",
                     "#{publishers.polydor}", "#{publishers.rca}", "#{publishers.sony}",
@@ -63,9 +63,9 @@
                     "type": "STRING",
                     "parameters": [
                         {
-                            "name": "band",
+                            "id": "band",
+                            "name": "Name of band",
                             "type": "STRING",
-                            "label": "Name of band",
                             "description": "Name of the band whose member to generate",
                             "nullable": true,
                             "editor": {
@@ -87,9 +87,9 @@
                     "type": "STRING",
                     "parameters": [
                         {
-                            "name": "band",
+                            "id": "band",
+                            "name": "Name of band",
                             "type": "STRING",
-                            "label": "Name of band",
                             "description": "Name of the band whose album will be generated",
                             "nullable": true,
                             "editor": {
@@ -108,6 +108,13 @@
                     "id": "catalog_number",
                     "name": "Catalog number",
                     "description": "The album's catalog number",
+                    "type": "STRING",
+                    "expression": "regex(template('publishers.catalog_number'))"
+                },
+                {
+                    "id": "publisher_catalog_number",
+                    "name": "Publisher catalog number",
+                    "description": "An example of a specific publisher's catalog number",
                     "type": "STRING",
                     "parameters": [
                         {
@@ -133,7 +140,7 @@
                             }
                         }
                     ],
-                    "expression": "regex(template('publishers.':params.publisher:')')"
+                    "expression": "regex(template('publishers.':params.publisher))"
                 }
             ]
         }
